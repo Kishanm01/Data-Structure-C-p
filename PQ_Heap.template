@@ -1,0 +1,63 @@
+// Name:        Kishan Mistry
+// Class:       CS 3305/Section 03
+// Term:        Fall 2021
+// Instructor:  Dr. Haddad
+// Assignment:  7
+
+#include <cassert>
+#include <cstdlib>
+#include <iostream>
+#include <iomanip>
+#include "PQ_Heap.h"
+
+// CONSTRUCTOR
+template <class T>
+priority_queue_heap<T>::priority_queue_heap() { };
+
+// Return true if priority queue is empty; otherwise return false
+template <class T>
+bool priority_queue_heap<T>::is_empty() const {
+	return objHeap.is_empty();
+}
+	
+// Return true if priority queue is full; otherwise return false
+template <class T>
+bool priority_queue_heap<T>::is_full() const {
+	return objHeap.is_full();
+}
+
+// Return (don't remove) the front element from the priority queue
+// Precondition: priority queue is not empty.
+template <class T>
+T priority_queue_heap<T>::front() {
+	assert(!is_empty());
+	return objHeap.get_root();
+}
+   
+// return number of elements in the queue
+template <class T>
+int priority_queue_heap<T>::size() {
+	return objHeap.get_size();
+}
+   
+// Remove the largest value from this priority queue and return it.
+// Precondition: priority queue is not empty.
+template <class T>
+T priority_queue_heap<T>::dequeue() {
+	assert(!is_empty());
+	return objHeap.remove();
+}
+   
+// Inserts the 'value' into the priority queue.
+// Precondition: priority queue is not full
+template <class T>
+void priority_queue_heap<T>::enqueue(const T& value) {
+	assert(!is_full());
+	objHeap.insert(value);
+}
+
+// Prints out each parent and its children (for all nodes with children)
+template <class T>
+void priority_queue_heap<T>::display_heap() {
+	objHeap.check_heap();
+}
